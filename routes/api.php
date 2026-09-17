@@ -5,4 +5,5 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 
-Route::get('/test', [SiteController::class, 'index']);
+Route::get('/banner', [SiteController::class, 'banners']);
+Route::get('/category/product', [SiteController::class, 'categories']);
