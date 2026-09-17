@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\CategoryResource;
 use App\Models\Banner;
 use App\Models\Category;
 use App\Models\Product;
@@ -12,7 +13,7 @@ class SiteController extends Controller
 
     public function banners(){
         try{
-            $data = Banner::where('visible',1)->get();
+            $data = Banner::orderBy('id')->where('visible',1)->get();
             return response($data ,200);
         }catch (\Exception $e){
             return $e;
@@ -21,8 +22,8 @@ class SiteController extends Controller
     }
     public function categories(){
         try{
-            $data = Category::where('visible',1)->get();
-            return response($data ,200);
+            $data = Category::orderBy('id')->where('visible',1)->get();
+            return response(CategoryResource::collection($data) ,200);
         }catch (\Exception $e){
             return $e;
         }
