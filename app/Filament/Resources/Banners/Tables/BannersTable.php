@@ -20,10 +20,7 @@ class BannersTable
             ->columns([
                 ImageColumn::make('image')
                     ->label('تصویر')
-                    ->disk('public')
-                    ->getStateUsing(function ($record): string {
-                        return $record->image;
-                    }),
+                    ->disk('public'),
                 IconColumn::make('visible')
                     ->label('نمایش')
                     ->boolean()

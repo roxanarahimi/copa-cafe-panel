@@ -24,7 +24,7 @@ class BannerForm
                     ->imageEditor()
                     ->imageCropAspectRatio('17:7')
                     ->disk('public') // or your disk
-                    ->directory('img/banner')
+                    ->directory('images/banners')
                     ->visibility('public')
                     ->imageEditorEmptyFillColor('#000000')
 //                    ->circleCropper()
