@@ -6,6 +6,9 @@ use Filament\Actions\BulkActionGroup;
 use Filament\Actions\DeleteBulkAction;
 use Filament\Actions\EditAction;
 use Filament\Actions\ViewAction;
+use Filament\Tables\Columns\IconColumn;
+use Filament\Tables\Columns\ImageColumn;
+use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 
 class ProductsTable
@@ -14,13 +17,31 @@ class ProductsTable
     {
         return $table
             ->columns([
-                //
+                ImageColumn::make('image')
+                    ->label('تصاویر')
+                    ->disk('public')
+                    ->getStateUsing(function ($record): string {
+                        return $record->images->first()->getUrl();
+                    }),
+                TextColumn::make('title')
+                    ->label('عنوان'),
+                TextColumn::make('title_en')
+                    ->label('عنوان انگلیسی'),
+
+
+                IconColumn::make('visible')
+                    ->label('نمایش')
+                    ->boolean()
+                    ->trueIcon('heroicon-o-check')->trueColor('success')
+                    ->falseIcon('heroicon-o-x-mark')->falseColor('danger')
+                ,
+
             ])
             ->filters([
                 //
             ])
             ->recordActions([
-                ViewAction::make(),
+//                ViewAction::make(),
                 EditAction::make(),
             ])
             ->toolbarActions([
