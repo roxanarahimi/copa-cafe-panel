@@ -18,21 +18,22 @@ class ProductsTable
         return $table
             ->columns([
                 ImageColumn::make('image1')
-                    ->label('تصویر1')
-                    ->disk('public')
-                    ->getStateUsing(function ($record): string {
-                        return $record->image1;
-                    }),
+                    ->label('تصویر 1')
+                    ->disk('public'),
                 ImageColumn::make('image2')
-                    ->label('تصویر2')
-                    ->disk('public')
-                    ->getStateUsing(function ($record): string {
-                        return $record->image2;
-                    }),
+                    ->label('تصویر 2')
+                    ->disk('public'),
                 TextColumn::make('title')
-                    ->label('عنوان'),
+                    ->label('عنوان')
+                    ->searchable()
+                    ->sortable(),
                 TextColumn::make('title_en')
-                    ->label('عنوان انگلیسی'),
+                    ->label('عنوان انگلیسی')
+                    ->searchable()
+                    ->sortable(),
+                TextColumn::make('category.title')
+                    ->label('دسته بندی')
+                    ->sortable(),
 
 
                 IconColumn::make('visible')
