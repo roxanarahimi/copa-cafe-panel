@@ -2,6 +2,7 @@
 
 namespace App\Filament\Resources\Products\Tables;
 
+use App\Http\Controllers\DateController;
 use Filament\Actions\BulkActionGroup;
 use Filament\Actions\DeleteBulkAction;
 use Filament\Actions\EditAction;
@@ -42,7 +43,9 @@ class ProductsTable
                     ->trueIcon('heroicon-o-check')->trueColor('success')
                     ->falseIcon('heroicon-o-x-mark')->falseColor('danger')
                 ,
-
+                TextColumn::make('created_at')
+                    ->label('تاریخ ایجاد')
+                    ->formatStateUsing(fn($state) => explode(' ', (new DateController())->toPersian($state))[0]),
             ])
             ->filters([
                 //

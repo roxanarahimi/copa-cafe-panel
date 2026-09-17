@@ -2,12 +2,14 @@
 
 namespace App\Filament\Resources\Banners\Tables;
 
+use App\Http\Controllers\DateController;
 use Filament\Actions\BulkActionGroup;
 use Filament\Actions\DeleteBulkAction;
 use Filament\Actions\EditAction;
 use Filament\Actions\ViewAction;
 use Filament\Tables\Columns\IconColumn;
 use Filament\Tables\Columns\ImageColumn;
+use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 
 class BannersTable
@@ -18,7 +20,6 @@ class BannersTable
             ->columns([
                 ImageColumn::make('image')
                     ->label('تصویر')
-
                     ->disk('public')
                     ->getStateUsing(function ($record): string {
                         return $record->image;
@@ -27,8 +28,10 @@ class BannersTable
                     ->label('نمایش')
                     ->boolean()
                     ->trueIcon('heroicon-o-check')->trueColor('success')
-                    ->falseIcon('heroicon-o-x-mark')->falseColor('danger')
-
+                    ->falseIcon('heroicon-o-x-mark')->falseColor('danger'),
+                TextColumn::make('created_at')
+                    ->label('تاریخ ایجاد')
+                    ->formatStateUsing(fn($state) => explode(' ', (new DateController())->toPersian($state))[0])
             ])
             ->filters([
                 //

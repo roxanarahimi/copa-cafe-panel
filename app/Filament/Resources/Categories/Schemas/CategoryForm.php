@@ -17,12 +17,6 @@ class CategoryForm
                     ->label('عنوان'),
                 TextInput::make('title_en')
                     ->label('عنوان انگلیسی'),
-                TextInput::make('link')
-                    ->label('لینک')
-                    ->columnSpanFull(),
-                TextInput::make('link_en')
-                    ->label('لینک انگلیسی')
-                    ->columnSpanFull(),
                 Select::make('visible')
                     ->label('نمایش')
                     ->options([
