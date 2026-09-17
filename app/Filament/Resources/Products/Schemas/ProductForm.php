@@ -14,13 +14,24 @@ class ProductForm
     {
         return $schema
             ->components([
-                FileUpload::make('images')
-                    ->label('تصاویر(2 عدد)')
+                FileUpload::make('image1')
+                    ->label('تصویر1')
                     ->required()
-                    ->multiple()
+//                    ->multiple()
 //                    ->reorderable()
-                    ->minFiles(2)
-                    ->maxFiles(2)
+//                    ->minFiles(2)
+//                    ->maxFiles(2)
+                    ->imageEditor()
+                    ->imageCropAspectRatio('1:1')
+                    ->disk('public') // or your disk
+                    ->directory('img/product')
+                    ->visibility('public')
+                    ->imageEditorEmptyFillColor('#000000')
+                    ->getUploadedFileNameForStorageUsing(function ($file): string {
+                        return 'copa-cafe-product-' . time() . '.' . $file->getClientOriginalExtension();
+                    }), FileUpload::make('image2')
+                    ->label('تصویر2')
+                    ->required()
                     ->imageEditor()
                     ->imageCropAspectRatio('1:1')
                     ->disk('public') // or your disk
@@ -30,14 +41,7 @@ class ProductForm
                     ->getUploadedFileNameForStorageUsing(function ($file): string {
                         return 'copa-cafe-product-' . time() . '.' . $file->getClientOriginalExtension();
                     }),
-                Select::make('product_category_id')
-                    ->label('دسته‌بندی')
-                    ->options(
-                        Category::pluck('title', 'id')->toArray()
-                    )
-                    ->searchable()
-                    ->preload()
-                    ->required(),
+
                 TextInput::make('title')
                     ->label('عنوان')->columnStart(1),
                 TextInput::make('title_en')
@@ -50,13 +54,14 @@ class ProductForm
                     ->label('توضیح'),
                 TextInput::make('text_en')
                     ->label('توضیح انگلیسی'),
-
-                TextInput::make('link')
-                    ->label('لینک')
-                    ->columnSpanFull(),
-                TextInput::make('link_en')
-                    ->label('لینک انگلیسی')
-                    ->columnSpanFull(),
+                Select::make('product_category_id')
+                    ->label('دسته‌بندی')
+                    ->options(
+                        Category::pluck('title', 'id')->toArray()
+                    )
+                    ->searchable()
+                    ->preload()
+                    ->required(),
                 Select::make('visible')
                     ->label('نمایش')
                     ->options([

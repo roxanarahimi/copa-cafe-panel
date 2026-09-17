@@ -19,9 +19,10 @@ return new class extends Migration
             $table->string('title_en')->nullable();
             $table->string('subTitle');
             $table->string('subTitle_en')->nullable();
-            $table->longText('text');
-            $table->longText('text_en')->nullable();
-            $table->longText('images')->nullable();
+            $table->text('text')->nullable();
+            $table->text('text_en')->nullable();
+            $table->text('image1')->nullable();
+            $table->text('image2')->nullable();
             $table->boolean('visible')->default(0);
             $table->timestamps();
         });

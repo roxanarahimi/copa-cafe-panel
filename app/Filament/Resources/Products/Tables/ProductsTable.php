@@ -17,11 +17,16 @@ class ProductsTable
     {
         return $table
             ->columns([
-                ImageColumn::make('image')
-                    ->label('تصاویر')
+                ImageColumn::make('image1')
+                    ->label('تصویر1')
                     ->disk('public')
                     ->getStateUsing(function ($record): string {
-                        return $record->images->first()->getUrl();
+                        return $record->image1;
+                    }), ImageColumn::make('image2')
+                    ->label('تصویر2')
+                    ->disk('public')
+                    ->getStateUsing(function ($record): string {
+                        return $record->image2;
                     }),
                 TextColumn::make('title')
                     ->label('عنوان'),
