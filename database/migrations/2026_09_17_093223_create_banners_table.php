@@ -14,11 +14,11 @@ return new class extends Migration
         Schema::create('banners', function (Blueprint $table) {
             $table->id();
             $table->string('index')->default(0);
-            $table->string('title');
+            $table->string('title')->nullable();
             $table->string('title_en')->nullable();
-            $table->string('subTitle');
+            $table->string('subTitle')->nullable();
             $table->string('subTitle_en')->nullable();
-            $table->longText('link');
+            $table->longText('link')->nullable();
             $table->longText('link_en')->nullable();
             $table->longText('image')->nullable();
             $table->boolean('visible')->default(0);
