@@ -39,7 +39,7 @@ class ProductForm
                     ->visibility('public')
                     ->imageEditorEmptyFillColor('#000000')
                     ->getUploadedFileNameForStorageUsing(function ($file): string {
-                        return 'copa-cafe-product-' . time() . '.' . $file->getClientOriginalExtension();
+                        return 'copa-cafe-product--' . time() . '.' . $file->getClientOriginalExtension();
                     }),
 
                 TextInput::make('title')
