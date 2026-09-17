@@ -24,7 +24,7 @@ class ProductForm
                     ->imageEditor()
                     ->imageCropAspectRatio('1:1')
                     ->disk('public') // or your disk
-                    ->directory('img/product')
+                    ->directory('images/products')
                     ->visibility('public')
                     ->imageEditorEmptyFillColor('#000000')
                     ->getUploadedFileNameForStorageUsing(function ($file): string {
@@ -35,7 +35,7 @@ class ProductForm
                     ->imageEditor()
                     ->imageCropAspectRatio('1:1')
                     ->disk('public') // or your disk
-                    ->directory('img/product')
+                    ->directory('images/products')
                     ->visibility('public')
                     ->imageEditorEmptyFillColor('#000000')
                     ->getUploadedFileNameForStorageUsing(function ($file): string {

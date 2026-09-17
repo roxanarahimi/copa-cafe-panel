@@ -22,7 +22,8 @@ class ProductsTable
                     ->disk('public')
                     ->getStateUsing(function ($record): string {
                         return $record->image1;
-                    }), ImageColumn::make('image2')
+                    }),
+                ImageColumn::make('image2')
                     ->label('تصویر2')
                     ->disk('public')
                     ->getStateUsing(function ($record): string {
