@@ -18,7 +18,7 @@ class CategoryResource extends JsonResource
             "id"=>$this->id,
             "title"=>$this->title,
             "title_en"=>$this->title_en,
-            "products"=>$this->products,
+            "products"=>ProductResource::collection($this->products),
             "created_at"=>$this->created_at,
         ];
     }
